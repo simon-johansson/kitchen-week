@@ -1,0 +1,57 @@
+extends layout
+
+block content
+  script(type='text/javascript').
+    var emails = !{JSON.stringify(thisWeek.emails)};
+
+  .wrapper
+
+    .thisWeek
+      h1 Kitchen week #{thisWeek.number}
+      h2 #{thisWeek.names[0]} & #{thisWeek.names[1]}
+      //- h3 (#{thisWeek.emails[0]}) & (#{thisWeek.emails[1]})
+
+      h3 Give #{thisWeek.names[0].split(' ')[0]} & #{thisWeek.names[1].split(' ')[0]} some feedback on their kitchen duties
+
+      section.color-2
+        p
+          button.btn.btn-2.btn-2i
+            .overlay 😘
+
+          button.btn.btn-2.btn-2j
+            .overlay 😠
+
+      //- section#btn-click.color-7
+        //- p.text Click on the buttons to see the effect
+        //- p
+          button.btn.btn-7.btn-7a.icon-truck Order item
+          button.btn.btn-7.btn-7b.icon-envelope Send message
+        //- p
+          button.btn.btn-7.btn-7c.btn-icon-only.icon-arrow-right Submit
+          button.btn.btn-7.btn-7d.btn-icon-only.icon-remove Empty
+        //- p
+          button.btn.btn-7.btn-7e.btn-icon-only.icon-heart Like
+          button.btn.btn-7.btn-7f.btn-icon-only.icon-star Fav
+          button.btn.btn-7.btn-7g.btn-icon-only.icon-plus Add
+        //- p
+          button.btn.btn-7.btn-7h.icon-envelope Submit form
+          button.btn.btn-7.btn-7h.icon-envelope Submit form
+        //- #trash-effect.trash-effect
+          button.btn.btn-7.btn-7i.btn-icon-only.icon-remove-2 Remove
+          .icon-file
+          .icon-file
+          .icon-file
+
+      //- button.ladda-button(data-msg="good" data-style="expand-right" data-size="xl" data-color="green")
+      //-   span.ladda-label 😘
+
+      //- button.ladda-button(data-msg="bad" data-style="expand-right" data-size="xl" data-color="red")
+      //-   span.ladda-label 😠
+
+      //- button
+      //-   h3 Send friendly reminder
+
+
+  .otherInfo
+    p.nextWeek Next week: #{nextWeek.names[0]} & #{nextWeek.names[1]}
+    p Need to swap your week? Talk to Malin Hansson Dahl
