@@ -1,28 +1,9 @@
 
-var express = require('express');
-var mail = require('../lib/mail');
-var spreadsheet = require('../lib/spreadsheet');
-var router = express.Router();
-
-var propagate = function (onErr, onSuccess) {
-  return function(err) {
-    if (err) {
-      // return onErr(err);
-      return res.status(500).json(err);
-    } else {
-      var slice = Array.prototype.slice;
-      var rest = slice.call(arguments, 1);
-      return onSuccess.apply(this, rest);
-    }
-  }
-};
-
-router.get('/', function(req, res) {
-  spreadsheet.getData(function (error, data) {
-    if(error){ return res.send(error); }
-    res.render('index', data);
-  });
-});
+const express = require('express');
+const mail = require('../lib/mail');
+const spreadsheet = require('../lib/spreadsheet');
+const propagate = require('../lib/propagate');
+const router = express.Router();
 
 // router.post('/poke', function(req, res) {
 //   var addresses = req.body.emails.join(', ');
@@ -36,16 +17,33 @@ router.get('/', function(req, res) {
 //   });
 // });
 
-router.post('/positive', function(req, res) {
-  spreadsheet.addPositive(propagate(res, function () {
+router.get('/', (req, res, next) => {
+  spreadsheet.getData((err, data) => {
+    if (err) {
+      var error = new Error(err);
+      error.status = 500;
+      return next(error);
+    }
+    res.render('index', data);
+  });
+});
+
+router.post('/positive', (req, res)  => {
+  spreadsheet.addPositive(err => {
+    if (err) {
+      return res.status(500).json({ error: 'Could not set feeback' });
+    }
     res.json('Positive response recived');
-  }));
+  });
 });
 
-router.post('/negative', function(req, res) {
-  spreadsheet.addNegative(propagate(res, function () {
+router.post('/negative', (req, res)  => {
+  spreadsheet.addNegative(err  => {
+    if (err) {
+      return res.status(500).json({ error: 'Could not set feeback' });
+    }
     res.json('Negative response recived');
-  }));
+  });
 });
 
-module.exports = router;
+export default router;

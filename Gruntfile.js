@@ -24,6 +24,9 @@ module.exports = function (grunt) {
         }
       }
     },
+    eslint: {
+      target: ['lib/', 'routes/']
+    },
     watch: {
       options: {
         nospawn: true,
@@ -34,7 +37,7 @@ module.exports = function (grunt) {
           'bin/www',
           'app.js',
           'routes/*.js',
-          'lib/*.js',
+          'lib/**/*.js',
         ],
         tasks: ['develop', 'delayed-livereload']
       },
@@ -85,5 +88,9 @@ module.exports = function (grunt) {
     'sass',
     'develop',
     'watch'
+  ]);
+
+  grunt.registerTask('test', [
+    'eslint',
   ]);
 };

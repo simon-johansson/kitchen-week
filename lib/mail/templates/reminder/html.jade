@@ -1,0 +1,41 @@
+extends ../_common/base.jade
+
+block title
+  title Kitchen Week - Reminder
+
+block content
+  h1 This is a mail
+  h2 Hello #{thisWeek.names[0]} & #{thisWeek.names[1]}!
+
+  table.body-wrap
+    tr
+      td.container
+        .content
+          table.main(width='100%', cellpadding='0', cellspacing='0')
+            tr
+              td.content-wrap
+                meta(itemprop='name', content='Confirm Email')
+                table(width='100%', cellpadding='0', cellspacing='0')
+                  tr
+                    td.content-block
+                      | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim ducimus nostrum, rerum ut sed eaque eum! Perferendis minima repellat eaque!
+                  tr
+                    td.content-block
+                      | Username:
+                      strong [EMAIL]
+                      br
+                      | Password:
+                      strong [PASSWORD]
+                  tr
+                    td.content-block(itemprop='handler', itemscope='', itemtype='http://schema.org/HttpActionHandler')
+                      a.btn-primary(href='[SITE-URL]', itemprop='url') LOGIN
+                  tr
+                    td.content-block
+                      | We recommend that you change your password after you have logged in. To do so, go to ”Profile” and click the edit icon.
+                  tr
+                    td.content-block
+                      small
+                        | If you received this email but did not expect to do so or if you have any questions. Please contact [SOMEONE-SMART]
+                      br
+                      | — DeLaval InService
+

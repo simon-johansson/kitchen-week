@@ -1,13 +1,13 @@
 extends layout
 
 block content
-  script(type='text/javascript').
+  //- script(type='text/javascript').
     var emails = !{JSON.stringify(thisWeek.emails)};
 
   .wrapper
 
     .thisWeek
-      h1 Kitchen week #{thisWeek.number}
+      h1 Kitchen week #{thisWeek.week}
       h2 #{thisWeek.names[0]} & #{thisWeek.names[1]}
       //- h3 (#{thisWeek.emails[0]}) & (#{thisWeek.emails[1]})
 
