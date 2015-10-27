@@ -1,0 +1,11 @@
+
+mixin header(title)
+  tr
+    td(colspan="2").branding.header
+      if title
+        h1= title
+      else
+        - var daysDone = new Date().getDay() + 1;
+        - var daysLeft = 5 - daysDone;
+        h1 #{daysDone} days down, #{daysLeft} more to go!
+

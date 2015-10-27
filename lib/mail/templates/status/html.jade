@@ -2,7 +2,7 @@ extends ../_common/base.jade
 include ../_common/mixins.jade
 
 block title
-  title Kitchen Week - Reminder
+  title Kitchen Week - Status update
 
 block content
   table.body-wrap
@@ -15,32 +15,31 @@ block content
                 meta(itemprop='name', content='Confirm Email')
                 table(width='100%', cellpadding='0', cellspacing='0')
 
-                  +header('Heroes, unite!')
+                  +header
 
                   tr
                     td(colspan="2").content-block
                       br
-                      h4 Hello #{thisWeek.names[0]} & #{thisWeek.names[1]}!
-                      | As kitchen heroes, your duties consists of the following: ...
-                  tr
-                    td(colspan="2").content-block
-                      | Last weeks kitchen heroes was #{prevWeek.names[0]} & #{prevWeek.names[1]}, they got:
+                      h4 Hi #{thisWeek.names[0].split(' ')[0]} & #{thisWeek.names[1].split(' ')[0]}!
+                      | This is the feedback you guys have received so far today:
+
                   tr
                     td.content-block.split
-                      span.positive #{prevWeek.feedback.positive.total}
+                      span.positive #{thisWeek.feedback.positive.today}
                       span.description #{images.positive.tag}
                       img(src="#{images.positive.url}")
 
                     td.content-block.split
-                      span.negative #{prevWeek.feedback.negative.total}
+                      span.negative #{thisWeek.feedback.negative.today}
                       span.description #{images.negative.tag}
                       img(src="#{images.negative.url}")
 
                   tr
                     td(colspan="2").content-block
-                      | They therefore received a score of
-                      | <strong>#{prevWeek.feedback.positive.total - prevWeek.feedback.negative.total}</strong> (#{prevWeek.feedback.positive.total} - #{prevWeek.feedback.negative.total}).
-                      | Think you can beat that?
+                      - var goodJob = thisWeek.feedback.positive.today >= thisWeek.feedback.negative.today;
+                      if goodJob
+                        | Nice going! Keep up the good work for tomorrow as well.
+                      else
+                        | Hmmm... Looks like your fellow co-worker think you could have been a better kitchen hero. Think positive, you'll get a new chance tomorrow 😉.
 
                   include ../_common/partials/footer.jade
-

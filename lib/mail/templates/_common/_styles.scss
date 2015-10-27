@@ -38,6 +38,7 @@ body {
 .body-wrap {
   background-color: #f6f6f6;
   width: 100%;
+  min-width: 450px;
 }
 
 .container {
@@ -70,19 +71,56 @@ body {
 
 .content-block {
   padding: 0 0 20px;
+  &.split {
+    width: 50%;
+    height: 50px;
+    vertical-align: middle;
+    margin: auto;
+    text-align: center;
+    position: relative;
+    span {
+      font-weight: bold;
+      margin: 0;
+      position: absolute;
+      top: 35%;
+      color: white;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      text-align: center;
+      &.description {
+        margin-top: 35px;
+        font-size: 12px;
+      }
+      &.positive {
+        color: lime;
+        font-size: 60px;
+        opacity: 0.9;
+      }
+      &.negative {
+        color: tomato;
+        font-size: 60px;
+        opacity: 0.9;
+      }
+    }
+    img {
+      height: 160px;
+    }
+  }
 }
 
 .header {
   width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 }
 
 .footer {
   width: 100%;
   clear: both;
   color: #999;
-  padding: 20px;
+  // padding: 20px;
 }
+
 .footer p, .footer a, .footer td {
   color: #999;
   font-size: 12px;
@@ -100,6 +138,7 @@ h1, h2, h3 {
 }
 
 h1 {
+  color: white;
   font-size: 32px;
   font-weight: 500;
   /* 1.2em * 32px = 38.4px, use px to get airier line-height also in Thunderbird, and Yahoo!, Outlook.com, AOL webmail clients */
@@ -219,8 +258,13 @@ a {
 ------------------------------------- */
 .header.branding {
   font-size: 18px;
-  background-color: #103d82;
+  // background-color: #103d82;
+  background-color: #c61c59;
   padding: 20px;
+
+  h1 {
+    margin-top: 0;
+  }
 }
 
 /* -------------------------------------
