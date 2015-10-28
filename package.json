@@ -2,6 +2,9 @@
   "name": "kitchen-hero",
   "version": "0.0.1",
   "private": true,
+  "engines": {
+    "node": "4.x.x"
+  },
   "scripts": {
     "start": "node ./bin/www"
   },
