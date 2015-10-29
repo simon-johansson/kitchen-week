@@ -15,7 +15,7 @@ block content
                 meta(itemprop='name', content='Confirm Email')
                 table(width='100%', cellpadding='0', cellspacing='0')
 
-                  +header('Heroes, unite!')
+                  +header('Kitchen heroes, unite!')
 
                   tr
                     td(colspan="2").content-block
@@ -27,7 +27,7 @@ block content
                       | Last weeks kitchen heroes was #{prevWeek.names[0]} & #{prevWeek.names[1]}, they got:
                   tr
                     td.content-block.split
-                      img(src="#{images.positive.url}")
+                      img(src="#{images.positive.url}" height="160")
                       br
                       br
                       div
@@ -36,7 +36,7 @@ block content
                         span.description #{images.positive.tag}
 
                     td.content-block.split
-                      img(src="#{images.negative.url}")
+                      img(src="#{images.negative.url}" height="160")
                       br
                       br
                       div
@@ -46,8 +46,6 @@ block content
 
                   tr
                     td(colspan="2").content-block
-                      br
-                      br
                       | They therefore received a score of
                       | <strong>#{prevWeek.feedback.positive.total - prevWeek.feedback.negative.total}</strong> (#{prevWeek.feedback.positive.total} - #{prevWeek.feedback.negative.total}).
                       | Think you can beat that?

@@ -29,14 +29,22 @@ block content
 
                   tr
                     td.content-block.split
-                      span.positive #{thisWeek.feedback.positive.total}
-                      span.description #{images.positive.tag}
-                      img(src="#{images.positive.url}")
+                      img(src="#{images.positive.url}" height="160")
+                      br
+                      br
+                      div
+                        span.positive #{thisWeek.feedback.positive.today}
+                        br
+                        span.description #{images.positive.tag}
 
                     td.content-block.split
-                      span.negative #{thisWeek.feedback.negative.total}
-                      span.description #{images.negative.tag}
-                      img(src="#{images.negative.url}")
+                      img(src="#{images.negative.url}" height="160")
+                      br
+                      br
+                      div
+                        span.negative #{thisWeek.feedback.negative.today}
+                        br
+                        span.description #{images.negative.tag}
 
                   tr
                     td(colspan="2").content-block
