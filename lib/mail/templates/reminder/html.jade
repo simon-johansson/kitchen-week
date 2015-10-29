@@ -27,17 +27,27 @@ block content
                       | Last weeks kitchen heroes was #{prevWeek.names[0]} & #{prevWeek.names[1]}, they got:
                   tr
                     td.content-block.split
-                      span.positive #{prevWeek.feedback.positive.total}
-                      span.description #{images.positive.tag}
                       img(src="#{images.positive.url}")
+                      br
+                      br
+                      div
+                        span.positive #{prevWeek.feedback.positive.total}
+                        br
+                        span.description #{images.positive.tag}
 
                     td.content-block.split
-                      span.negative #{prevWeek.feedback.negative.total}
-                      span.description #{images.negative.tag}
                       img(src="#{images.negative.url}")
+                      br
+                      br
+                      div
+                        span.negative #{prevWeek.feedback.negative.total}
+                        br
+                        span.description #{images.negative.tag}
 
                   tr
                     td(colspan="2").content-block
+                      br
+                      br
                       | They therefore received a score of
                       | <strong>#{prevWeek.feedback.positive.total - prevWeek.feedback.negative.total}</strong> (#{prevWeek.feedback.positive.total} - #{prevWeek.feedback.negative.total}).
                       | Think you can beat that?

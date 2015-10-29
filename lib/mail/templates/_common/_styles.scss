@@ -74,22 +74,24 @@ body {
   &.split {
     width: 50%;
     height: 50px;
-    vertical-align: middle;
+    // vertical-align: middle;
     margin: auto;
     text-align: center;
     position: relative;
+    div {
+      text-align: center;
+      // margin: -100px 0 0 0;
+    }
     span {
       font-weight: bold;
       margin: 0;
-      position: absolute;
-      top: 35%;
+      // position: absolute;
+      // top: 35%;
       color: white;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      text-align: center;
+      // left: 0;
+      // right: 0;
+      // bottom: 0;
       &.description {
-        margin-top: 35px;
         font-size: 12px;
       }
       &.positive {
@@ -105,6 +107,8 @@ body {
     }
     img {
       height: 160px;
+      max-width: 90%;
+      // margin-top: -100px;
     }
   }
 }
