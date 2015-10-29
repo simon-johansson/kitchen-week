@@ -17,13 +17,13 @@ module.exports = function (grunt) {
         file: 'index.js'
       }
     },
-    sass: {
-      dist: {
-        files: {
-          'public/css/style.css': 'public/css/style.scss'
-        }
-      }
-    },
+    // sass: {
+    //   dist: {
+    //     files: {
+    //       'public/css/style.css': 'public/css/style.scss'
+    //     }
+    //   }
+    // },
     eslint: {
       target: ['lib/', 'routes/']
     },
@@ -51,7 +51,7 @@ module.exports = function (grunt) {
         files: [
           'public/css/*.scss'
         ],
-        tasks: ['sass'],
+        // tasks: ['sass'],
         options: {
           livereload: reloadPort
         }
@@ -85,7 +85,7 @@ module.exports = function (grunt) {
   });
 
   grunt.registerTask('default', [
-    'sass',
+    // 'sass',
     'develop',
     'watch'
   ]);

@@ -5,7 +5,7 @@ mixin header(title)
       if title
         h1= title
       else
-        - var daysDone = new Date().getDay() + 1;
+        - var daysDone = new Date().getDay();
         - var daysLeft = 5 - daysDone;
         h1 #{daysDone} days down, #{daysLeft} more to go!
 
