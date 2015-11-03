@@ -11,6 +11,7 @@ const {
   summaryTemplate
 } = require('../lib/mail/templates');
 
+// Använd Promise.all instället!
 const getData = (template, callback) => {
   async.parallel({
     spreadsheet: clb => {
