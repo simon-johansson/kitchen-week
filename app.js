@@ -1,24 +1,24 @@
 
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var babelify = require('express-babelify-middleware');
+import express from 'express';
+import {join} from 'path';
+import favicon from 'serve-favicon';
+import logger from 'morgan';
+import cookieParser from 'cookie-parser';
+import bodyParser from 'body-parser';
+import babelify from 'express-babelify-middleware';
 
-var routes = require('./routes/index');
-var mails = require('./routes/mail');
+import routes from './routes/index';
+import mails from './routes/mail';
 
-var app = express();
+const app = express();
 
-var env = process.env.NODE_ENV || 'development';
+const env = process.env.NODE_ENV || 'development';
 app.locals.ENV = env;
 app.locals.ENV_DEVELOPMENT = env == 'development';
 
 // view engine setup
 
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 // app.use(favicon(__dirname + '/public/img/favicon.ico'));
@@ -28,7 +28,7 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(join(__dirname, 'public')));
 
 app.get('/js/bundle.js', babelify('./public/js/app.js'));
 
@@ -36,8 +36,8 @@ app.use('/', routes);
 app.use('/mails', mails);
 
 /// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-    var err = new Error('Not Found');
+app.use((req, res, next) => {
+    let err = new Error('Not Found');
     err.status = 404;
     next(err);
 });
@@ -48,7 +48,7 @@ app.use(function(req, res, next) {
 // will print stacktrace
 
 if (app.get('env') === 'development') {
-    app.use(function(err, req, res, next) {
+    app.use((err, req, res, next) => {
         res.status(err.status || 500);
         res.render('error', {
             message: err.message,
@@ -60,7 +60,7 @@ if (app.get('env') === 'development') {
 
 // production error handler
 // no stacktraces leaked to user
-app.use(function(err, req, res, next) {
+app.use((err, req, res, next) => {
     res.status(err.status || 500);
     res.render('error', {
         message: err.message,
@@ -69,5 +69,4 @@ app.use(function(err, req, res, next) {
     });
 });
 
-
-module.exports = app;
+export default app;
