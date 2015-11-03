@@ -17,6 +17,7 @@
     "current-week-number": "^1.0.7",
     "email-templates": "^2.0.1",
     "express": "^4.13.3",
+    "express-babelify-middleware": "^0.1.0",
     "forever": "^0.15.1",
     "giphy": "0.0.4",
     "google-spreadsheet": "^1.0.1",

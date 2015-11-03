@@ -14,7 +14,7 @@ module.exports = function (grunt) {
     pkg: grunt.file.readJSON('package.json'),
     develop: {
       server: {
-        file: 'bin/www'
+        file: 'index.js'
       }
     },
     sass: {
@@ -34,10 +34,10 @@ module.exports = function (grunt) {
       },
       server: {
         files: [
-          'bin/www',
           'app.js',
           'routes/*.js',
           'lib/**/*.js',
+          'public/js/**/*.js',
         ],
         tasks: ['develop', 'delayed-livereload']
       },
