@@ -23,6 +23,7 @@
     "google-spreadsheet": "^1.0.1",
     "jade": "^1.11.0",
     "less": "^2.5.3",
+    "less-file": "0.0.9",
     "lodash": "^3.10.1",
     "moment": "^2.10.6",
     "morgan": "^1.6.1",
