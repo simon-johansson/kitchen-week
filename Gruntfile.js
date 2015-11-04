@@ -12,21 +12,17 @@ module.exports = function (grunt) {
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+
     develop: {
       server: {
         file: 'index.js'
       }
     },
-    // sass: {
-    //   dist: {
-    //     files: {
-    //       'public/css/style.css': 'public/css/style.scss'
-    //     }
-    //   }
-    // },
+
     eslint: {
-      target: ['lib/', 'routes/']
+      target: ['lib/', 'routes/', 'public/js/']
     },
+
     watch: {
       options: {
         nospawn: true,
@@ -85,7 +81,6 @@ module.exports = function (grunt) {
   });
 
   grunt.registerTask('default', [
-    // 'sass',
     'develop',
     'watch'
   ]);
