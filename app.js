@@ -6,6 +6,7 @@ import logger from 'morgan';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
 import babelify from 'express-babelify-middleware';
+import less from 'less-file';
 
 import routes from './routes/index';
 import mails from './routes/mail';
@@ -31,6 +32,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(cookieParser());
 app.use(express.static(join(__dirname, 'public')));
+app.use('/style', less(join(__dirname, 'styling', 'index.less')));
 
 app.get('/js/bundle.js', babelify('./public/js/app.js'));
 
