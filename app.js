@@ -32,7 +32,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(cookieParser());
 app.use(express.static(join(__dirname, 'public')));
-app.use('/style', less(join(__dirname, 'styling', 'index.less')));
+app.use('/style', less(join(__dirname, 'styling', 'client.less')));
 
 app.get('/js/bundle.js', babelify('./public/js/app.js'));
 
