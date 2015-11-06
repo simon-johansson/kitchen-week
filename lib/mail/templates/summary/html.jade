@@ -5,63 +5,37 @@ block title
   title Kitchen Week - Week Summary
 
 block content
-  table.body-wrap
-    tr
-      td.container
-        .content
-          table.main(width='100%', cellpadding='0', cellspacing='0')
-            tr
-              td.content-wrap
-                meta(itemprop='name', content='Confirm Email')
-                table(width='100%', cellpadding='0', cellspacing='0')
 
-                  +header('This is the end of a great era!')
+  +header('This is the end of a great era!')
 
-                  tr
-                    td(colspan="2").content-block
-                      br
-                      h4 Dear #{thisWeek.names[0].split(' ')[0]} & #{thisWeek.names[1].split(' ')[0]}!
-                      | This week has come to an end, which means that you are hereby relieved of your duties as kitchen heroes.
+  tr
+    td(colspan="2").content-block
+      br
+      h4 Dear #{thisWeek.names[0].split(' ')[0]} & #{thisWeek.names[1].split(' ')[0]}!
+      | This week has come to an end, which means that you are hereby relieved of your duties as kitchen heroes.
 
-                  tr
-                    td(colspan="2").content-block
-                      | This is a summary of all the feedback you have received during this week:
+  tr
+    td(colspan="2").content-block
+      | This is a summary of all the feedback you have received during this week:
 
-                  tr
-                    td.content-block.split
-                      img(src="#{images.positive.url}" height="160")
-                      br
-                      br
-                      div
-                        span.positive #{thisWeek.feedback.positive.today}
-                        br
-                        span.description #{images.positive.tag}
+  +results(images, thisWeek.feedback.positive.total, thisWeek.feedback.negative.total)
 
-                    td.content-block.split
-                      img(src="#{images.negative.url}" height="160")
-                      br
-                      br
-                      div
-                        span.negative #{thisWeek.feedback.negative.today}
-                        br
-                        span.description #{images.negative.tag}
+  tr
+    td(colspan="2").content-block
+      - var goodJob = thisWeek.feedback.positive.total >= thisWeek.feedback.negative.total;
+      - var arr = ["You guys will surely go down in history as some of greatest kitchen heroes ever!", "Your heroic achievements will be praised in weeks to come!", "Guess what you would find if you look up 'kitchen hero' in the dictionary? Thats right, you guys!", "If there was a kitchen hero mountain your faces would no doubt be carved in to it!"];
+      | You therefore receive a score of
+      | <strong>#{thisWeek.feedback.positive.total - thisWeek.feedback.negative.total}</strong> (#{thisWeek.feedback.positive.total} - #{thisWeek.feedback.negative.total}).
+      if goodJob
+        |  Wow! Just wow! #{arr[Math.floor(Math.random() * (arr.length))]}
+      else
+        | Maybe not the result that you had hoped for, but you probably have a good excuse... Right?
 
-                  tr
-                    td(colspan="2").content-block
-                      - var goodJob = thisWeek.feedback.positive.total >= thisWeek.feedback.negative.total;
-                      - var arr = ["You guys will surely go down in history as some of greatest kitchen heroes ever!", "Your heroic achievements will be praised in weeks to come!", "Guess what you would find if you look up 'kitchen hero' in the dictionary? Thats right, you guys!", "If there was a kitchen hero mountain your faces would no doubt be carved in to it!"];
-                      | You therefore receive a score of
-                      | <strong>#{thisWeek.feedback.positive.total - thisWeek.feedback.negative.total}</strong> (#{thisWeek.feedback.positive.total} - #{thisWeek.feedback.negative.total}).
-                      if goodJob
-                        |  Wow! Just wow! #{arr[Math.floor(Math.random() * (arr.length))]}
-                      else
-                        | Maybe not the result that you had hoped for, but you probably have a good excuse... Right?
+  tr
+    td(colspan="2").content-block.highscore
+      h4 This years top #{highscore.length} highscore
+      each score, index in highscore
+        p !{index ? (index + 1) + ".&nbsp;&nbsp;" : '👑'} <strong>#{score.score}</strong> (#{score.names} - w. #{score.week})
+          | #{score.week === thisWeek.week ? '⬅ Hey, nice going!' : ''}
 
-                  tr
-                    td(colspan="2").content-block.highscore
-                      h4 This years top #{highscore.length} highscore
-                      each score, index in highscore
-                        p !{index ? (index + 1) + ".&nbsp;&nbsp;" : '👑'} <strong>#{score.score}</strong> (#{score.names} - w. #{score.week})
-                          | #{score.week === thisWeek.week ? '⬅ Hey, nice going!' : ''}
-
-                  include ../_common/partials/footer.jade
+  include ../_common/partials/footer.jade

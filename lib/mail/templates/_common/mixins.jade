@@ -1,7 +1,7 @@
 
 mixin header(title)
   tr
-    td(colspan="2").branding.header
+    td(colspan="2").header
       if title
         h1= title
       else
@@ -9,3 +9,22 @@ mixin header(title)
         - var daysLeft = 5 - daysDone;
         h1 #{daysDone} days down, #{daysLeft} more to go!
 
+mixin results(images, positive, negative)
+  tr
+    td.content-block.col-split
+      img(src="#{images.positive.url}" height="160")
+      br
+      br
+      div.result-wrapper
+        span.positive #{positive}
+        br
+        span.description #{images.positive.tag}
+
+    td.content-block.col-split
+      img(src="#{images.negative.url}" height="160")
+      br
+      br
+      div.result-wrapper
+        span.negative #{negative}
+        br
+        span.description #{images.negative.tag}

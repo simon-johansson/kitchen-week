@@ -5,50 +5,26 @@ block title
   title Kitchen Week - Reminder
 
 block content
-  table.body-wrap
-    tr
-      td.container
-        .content
-          table.main(width='100%', cellpadding='0', cellspacing='0')
-            tr
-              td.content-wrap
-                meta(itemprop='name', content='Confirm Email')
-                table(width='100%', cellpadding='0', cellspacing='0')
 
-                  +header('Kitchen heroes, unite!')
+  +header('Kitchen heroes, unite!')
 
-                  tr
-                    td(colspan="2").content-block
-                      br
-                      h4 Hello #{thisWeek.names[0]} & #{thisWeek.names[1]}!
-                      | As kitchen heroes, your duties consists of the following: ...
-                  tr
-                    td(colspan="2").content-block
-                      | Last weeks kitchen heroes was #{prevWeek.names[0]} & #{prevWeek.names[1]}, they got:
-                  tr
-                    td.content-block.split
-                      img(src="#{images.positive.url}" height="160")
-                      br
-                      br
-                      div
-                        span.positive #{prevWeek.feedback.positive.total}
-                        br
-                        span.description #{images.positive.tag}
+  tr
+    td(colspan="2").content-block
+      br
+      h4 Hello #{thisWeek.names[0]} & #{thisWeek.names[1]}!
+      | As kitchen heroes, your duties consists of the following: ...
 
-                    td.content-block.split
-                      img(src="#{images.negative.url}" height="160")
-                      br
-                      br
-                      div
-                        span.negative #{prevWeek.feedback.negative.total}
-                        br
-                        span.description #{images.negative.tag}
+  tr
+    td(colspan="2").content-block
+      | Last weeks kitchen heroes was #{prevWeek.names[0]} & #{prevWeek.names[1]}, they got:
 
-                  tr
-                    td(colspan="2").content-block
-                      | They therefore received a score of
-                      | <strong>#{prevWeek.feedback.positive.total - prevWeek.feedback.negative.total}</strong> (#{prevWeek.feedback.positive.total} - #{prevWeek.feedback.negative.total}).
-                      | Think you can beat that?
+  +results(images, prevWeek.feedback.positive.total, prevWeek.feedback.negative.total)
 
-                  include ../_common/partials/footer.jade
+  tr
+    td(colspan="2").content-block
+      | They therefore received a score of
+      | <strong>#{prevWeek.feedback.positive.total - prevWeek.feedback.negative.total}</strong> (#{prevWeek.feedback.positive.total} - #{prevWeek.feedback.negative.total}).
+      | Think you can beat that?
+
+  include ../_common/partials/footer.jade
 

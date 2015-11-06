@@ -5,49 +5,23 @@ block title
   title Kitchen Week - Status update
 
 block content
-  table.body-wrap
-    tr
-      td.container
-        .content
-          table.main(width='100%', cellpadding='0', cellspacing='0')
-            tr
-              td.content-wrap
-                meta(itemprop='name', content='Confirm Email')
-                table(width='100%', cellpadding='0', cellspacing='0')
 
-                  +header
+  +header
 
-                  tr
-                    td(colspan="2").content-block
-                      br
-                      h4 Hi #{thisWeek.names[0].split(' ')[0]} & #{thisWeek.names[1].split(' ')[0]}!
-                      | This is the feedback you guys have received so far today:
+  tr
+    td(colspan="2").content-block
+      br
+      h4 Hi #{thisWeek.names[0].split(' ')[0]} & #{thisWeek.names[1].split(' ')[0]}!
+      | This is the feedback you guys have received so far today:
 
-                  tr
-                    td.content-block.split
-                      img(src="#{images.positive.url}" height="160")
-                      br
-                      br
-                      div
-                        span.positive #{thisWeek.feedback.positive.today}
-                        br
-                        span.description #{images.positive.tag}
+  +results(images, thisWeek.feedback.positive.today, thisWeek.feedback.negative.today)
 
-                    td.content-block.split
-                      img(src="#{images.negative.url}" height="160")
-                      br
-                      br
-                      div
-                        span.negative #{thisWeek.feedback.negative.today}
-                        br
-                        span.description #{images.negative.tag}
+  tr
+    td(colspan="2").content-block
+      - var goodJob = thisWeek.feedback.positive.today >= thisWeek.feedback.negative.today;
+      if goodJob
+        | Nice going! Keep up the good work for tomorrow as well.
+      else
+        | Hmmm... Looks like your fellow co-worker think you could have been a better kitchen hero. Think positive, you'll get a new chance tomorrow 😉.
 
-                  tr
-                    td(colspan="2").content-block
-                      - var goodJob = thisWeek.feedback.positive.today >= thisWeek.feedback.negative.today;
-                      if goodJob
-                        | Nice going! Keep up the good work for tomorrow as well.
-                      else
-                        | Hmmm... Looks like your fellow co-worker think you could have been a better kitchen hero. Think positive, you'll get a new chance tomorrow 😉.
-
-                  include ../_common/partials/footer.jade
+  include ../_common/partials/footer.jade
