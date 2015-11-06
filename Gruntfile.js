@@ -33,19 +33,19 @@ module.exports = function (grunt) {
           'app.js',
           'routes/*.js',
           'lib/**/*.js',
-          'public/js/**/*.js',
+          'public/js/*.js',
         ],
         tasks: ['develop', 'delayed-livereload']
       },
-      js: {
-        files: ['public/js/*.js'],
-        options: {
-          livereload: reloadPort
-        }
-      },
+//      js: {
+//        files: ['public/js/*.js'],
+//        options: {
+//          livereload: reloadPort
+//        }
+//      },
       css: {
         files: [
-          'public/css/*.scss'
+          'styling/**/*.less'
         ],
         // tasks: ['sass'],
         options: {
