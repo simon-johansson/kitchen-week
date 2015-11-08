@@ -1,37 +1,47 @@
 
-const express = require('express');
-const mail = require('../lib/mail');
-const spreadsheet = require('../lib/spreadsheet');
-const propagate = require('../lib/propagate');
-const router = express.Router();
+import {Router} from 'express';
+import mail from '../lib/mail';
+import {
+  givePositiveFeedback,
+  giveNegativeFeedback
+} from '../lib/spreadsheet';
+import propagate from '../lib/propagate';
+import getTemplateData from '../lib/getTemplateData';
+
+const router = Router();
+
+const onSuccess = res => {
+  return () => res.json('Feedback given');
+};
+
+const onError = res => {
+  const err = { error: 'Could not give feeback' };
+  return () => res.status(500).json(err);
+};
 
 router.get('/', (req, res, next) => {
-  spreadsheet.getData((err, data) => {
-    if (err) {
-      let error = new Error(err);
-      error.status = 500;
-      return next(error);
-    }
-    res.render('index', data);
-  });
+  const renderTemplate = data => res.render('index', data);
+  const onError = (err) => {
+    const error = new Error(err);
+    error.status = 500;
+    next(error);
+  };
+
+  getTemplateData()
+    .then(renderTemplate)
+    .catch(onError);
 });
 
-router.post('/positive', (req, res)  => {
-  spreadsheet.addPositive(err => {
-    if (err) {
-      return res.status(500).json({ error: 'Could not set feeback' });
-    }
-    res.json('Positive response recived');
-  });
+router.post('/positive', (req, res, next)  => {
+  givePositiveFeedback()
+    .then(onSuccess(res))
+    .catch(onError(res));
 });
 
 router.post('/negative', (req, res)  => {
-  spreadsheet.addNegative(err  => {
-    if (err) {
-      return res.status(500).json({ error: 'Could not set feeback' });
-    }
-    res.json('Negative response recived');
-  });
+  giveNegativeFeedback()
+    .then(onSuccess(res))
+    .catch(onError(res));
 });
 
 export default router;
