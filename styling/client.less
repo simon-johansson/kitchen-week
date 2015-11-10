@@ -9,7 +9,11 @@ body {
   padding: 20px;
 }
 
-.wrapper {
+.error {
+  display: none;
+}
+
+#app {
   background-color: #fff;
   border: 1px solid @lightgray;
   border-radius: 3px;
@@ -32,7 +36,7 @@ header {
   h1 {
     // background: @lightgray;
     // padding: 10px;
-    color: black;
+    color: @dark-gray;
     display: block;
     font-weight: bold;
     font-size: 50px;
@@ -47,30 +51,37 @@ header {
 
   .arrow-left,
   .arrow-right {
-    position: absolute;
+    // position: absolute;
     opacity: 0.9;
+    display: inline-block;
+    vertical-align: text-top;
   }
 
   .arrow-left {
     transform: rotate(-40deg);
     width: 60px;
-    top: 30px;
-    left: 265px;
+    // float: left;
+    // top: 30px;
+    // left: 250px;
   }
 
   .arrow-right {
-    top: 35px;
+    // float: right;
     transform: rotate(70deg);
     width: 50px;
-    right: 270px;
+    margin-top: 7px;
+    margin-left: 5px;
+    // top: 35px;
+    // right: 255px;
   }
 
   h3 {
     font-size: 20px;
+    display: inline-block;
   }
 
   .feedback-button {
-    margin-top: 50px;
+    margin-top: 20px;
     width: 50%;
     display: inline-block;
     position: relative;
@@ -110,7 +121,7 @@ header {
 
     h3 {
       font-weight: bold;
-      margin-top: 20px;
+      margin-top: 12px;
     }
   }
 }
