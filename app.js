@@ -5,7 +5,7 @@ import favicon from 'serve-favicon';
 import logger from 'morgan';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
-import babelify from 'express-babelify-middleware';
+import browserify from 'browserify-middleware';
 import less from 'less-file';
 
 import routes from './routes/index';
@@ -34,7 +34,13 @@ app.use(cookieParser());
 app.use(express.static(join(__dirname, 'public')));
 app.use('/style', less(join(__dirname, 'styling', 'client.less')));
 
-app.get('/js/bundle.js', babelify('./public/js/app.js'));
+const babelify = require('babelify');
+
+browserify.settings({
+  transform: [[babelify, {presets: ['es2015', 'stage-0']}]]
+});
+
+app.get('/js/bundle.js', browserify('./public/js/app.js'));
 
 app.use('/', routes);
 app.use('/mails', mails);
