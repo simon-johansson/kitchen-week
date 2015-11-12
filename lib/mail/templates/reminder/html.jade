@@ -11,20 +11,46 @@ block content
   tr
     td(colspan="2").content-block
       br
-      h4 Hello #{thisWeek.names[0]} & #{thisWeek.names[1]}!
-      | As kitchen heroes, your duties consists of the following: ...
+      h4 Hello #[+fullNames(thisWeek.names)]!
+      | It is everyone’s responsibility to keep the kitchen neat and tidy but as kitchen heroes you guys have a tiny bit extra responsibility this week. Please do your best to:
 
   tr
     td(colspan="2").content-block
-      | Last weeks kitchen heroes was #{prevWeek.names[0]} & #{prevWeek.names[1]}, they got:
-
-  +results(images, prevWeek.feedback.positive.total, prevWeek.feedback.negative.total)
+      ol
+        li Keep an eye on the dishwashers. Start them when full, empty when finished.
+        li Wipe down the counters and tables (preferably right after breakfast & lunch).
+        li Remove old and smelly stuff from the fridges and the freezer.
 
   tr
     td(colspan="2").content-block
-      | They therefore received a score of
-      | <strong>#{prevWeek.feedback.positive.total - prevWeek.feedback.negative.total}</strong> (#{prevWeek.feedback.positive.total} - #{prevWeek.feedback.negative.total}).
-      | Think you can beat that?
+      | Have you noticed the kitchen-hero-praiser iPad in the kitchen? Here are some tips for increasing your #[+feedbackTypes(feedbackTypes)] probability during the week:
 
-  include ../_common/partials/footer.jade
+  tr
+    td(colspan="2").content-block
 
+      - var arr = [];
+      - arr.push("Ensure that all the seed, nut and 🍏🍌🍊 bowls are filled up.");
+      - arr.push("Dark and gloomy? Light some candles! Make the kitchen cozy.");
+      - arr.push("Put on some 🎵 to set the mood. Something you like. Not Nickelback...");
+      - arr.push("Get some 🌹 for the office. Why? They smell good and are pretty.");
+      - arr.push("Tell Björn to place a food order for something special. Be creative!");
+      - arr.push("Treat your co-workers to a luxury breakfast or fika by baking something.");
+      - arr.push("Empty the trash cans if they start to smell like 💩");
+
+      ul
+        li #[+sample(arr)]
+        li #[+sample(arr)]
+
+  - var resultsPrevWeek = prevWeek.feedback[0].total + prevWeek.feedback[1].total;
+  if resultsPrevWeek
+    tr
+      td(colspan="2").content-block
+        | Last weeks kitchen heroes was #[+fullNames(prevWeek.names)], they got:
+
+    +results(images, prevWeek.feedback)
+
+    tr
+      td(colspan="2").content-block
+        | They therefore received a score of #[+score(prevWeek.feedback)]. Think you can beat that?
+
+  +footer("Can't be a kitchen hero this week? Mail looks strange? Talk to Simon (the tall one).")

@@ -1,4 +1,16 @@
 
+//- Client ---------------------
+
+mixin feedbackButton(index, feedbackTypes, images)
+  .feedback-button(data-type='#{feedbackTypes[index]}')
+    .img-wrapper
+      .overlay
+      img(src="#{images[index].url}")
+    h3 #{images[index].tag}
+
+
+//- Mails -----------------------
+
 mixin header(title)
   tr
     td(colspan="2").header
@@ -9,22 +21,42 @@ mixin header(title)
         - var daysLeft = 5 - daysDone;
         h1 #{daysDone} days down, #{daysLeft} more to go!
 
-mixin results(images, positive, negative)
+mixin results(images, feedback)
   tr
+  each val in [0, 1]
     td.content-block.col-split
-      img(src="#{images.positive.url}" height="160")
+      img(src="#{images[val].url}" height="160")
       br
       br
       div.result-wrapper
-        span.positive #{positive}
+        span.positive #{feedback[val].total}
         br
-        span.description #{images.positive.tag}
+        span.description #{images[val].tag}
 
-    td.content-block.col-split
-      img(src="#{images.negative.url}" height="160")
-      br
-      br
-      div.result-wrapper
-        span.negative #{negative}
-        br
-        span.description #{images.negative.tag}
+mixin sample(arr)
+  - var sliced = arr.splice(Math.floor(Math.random() * (arr.length)), 1);
+  = sliced
+
+mixin score(feedback)
+  <strong>#{feedback[0].total + feedback[1].total}</strong> (#{feedback[0].total} + #{feedback[1].total})
+
+mixin fullNames(names)
+  = names[0] + ' & ' + names[1]
+
+mixin firstNames(names)
+  = names[0].split(' ')[0] + ' & ' + names[1].split(' ')[0]
+
+mixin highscorePosition(index)
+  = index ? (index + 1) + ".&nbsp;&nbsp;" : '👑'
+
+mixin feedbackTypes(feedbackTypes)
+  = feedbackTypes[0].split(' ').join('-') + ' & ' + feedbackTypes[1].split(' ').join('-')
+
+mixin footer(text)
+  tr
+    td(colspan="2").footer
+      if text
+        p #{text}
+      else
+        p Mail looks strange? Have improvement ideas? Talk to Simon (the tall one).
+
