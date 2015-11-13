@@ -6,35 +6,44 @@ block title
 
 block content
 
-  +header('This is the end of a great era!')
+  - var headings = [];
+  - headings.push('Time to pass the torch')
+  - headings.push('The end of a great era')
 
-  tr
-    td(colspan="2").content-block
-      br
-      h4 Dear #[+firstNames(thisWeek.names)]!
-      | This week has come to an end, which means that you are hereby relieved of your duties as kitchen heroes.
+  +header(headings)
 
-  tr
-    td(colspan="2").content-block This is a summary of all the feedback you have received during this week:
+  +row
+    br
+    h4 Dear #[+firstNames(thisWeek.names)]!
+    | The work week has come to an end, which means that you are hereby relieved of your duties as kitchen heroes.
+
+  +row
+    | This is a summary of all the praise you have received during this week:
 
   +results(images, thisWeek.feedback)
 
-  tr
-    td(colspan="2").content-block
-      - var arr = [];
-      - arr.push("You guys will surely go down in history as some of greatest kitchen heroes ever!")
-      - arr.push("Your heroic achievements will be praised in weeks to come!")
-      - arr.push("Guess what you would find if you look up 'kitchen hero' in the dictionary? Thats right, you guys!")
-      - arr.push("If there was a kitchen hero mountain your faces would no doubt be carved in to it!")
+  +row
+    - var goodJob = thisWeek.feedback[0].total + thisWeek.feedback[1].total;
+    - var arr = [];
+    - arr.push("You guys will surely go down in history as some of greatest kitchen heroes ever!")
+    - arr.push("Your heroic achievements will be talked about in weeks to come!")
+    - arr.push("Guess what you would find if you look up 'kitchen hero' in the dictionary? Thats right, you guys!")
+    - arr.push("If there was a kitchen hero mountain your faces would no doubt be carved in to it!")
 
-      | You therefore receive a score of #[+score(thisWeek.feedback)]. Wow! Just wow! #[+sample(arr)]
+    | #[+score(thisWeek.feedback)].
+    if goodJob
+      | Wow! Just wow! #[+sample(arr)]
 
-  tr
-    td(colspan="2").content-block.highscore
+  - highscore.length = highscore.length > 5 ? 5 : highscore.length;
+  - var hasHighscore = highscore.length > 0;
+
+  if hasHighscore
+    +row('highscore')
       h4 This years top #{highscore.length} highscore
+        each score, index in highscore
+          p #[+highscorePosition(index)] #[+truncatedNames(score.names)] <strong>#{score.score}p</strong> <i>w. #{score.week}</i> #[+top5(score.week === thisWeek.week)]
 
-      each score, index in highscore
-        p #[+highscorePosition(index)] <strong>#{score.score}</strong> (#{score.names} - w. #{score.week})
-          | #{score.week === thisWeek.week ? '⬅ Hey, nice going!' : ''}
+  +row
+    | Have a great weekend!
 
-  include ../_common/partials/footer.jade
+  +footer()

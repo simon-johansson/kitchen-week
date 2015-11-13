@@ -6,51 +6,48 @@ block title
 
 block content
 
-  +header('Kitchen heroes, unite!')
+  - var headings = [];
+  - headings.push('Kitchen heroes, unite!')
+  - headings.push('Guardians of the kitchen')
 
-  tr
-    td(colspan="2").content-block
-      br
-      h4 Hello #[+fullNames(thisWeek.names)]!
-      | It is everyone’s responsibility to keep the kitchen neat and tidy but as kitchen heroes you guys have a tiny bit extra responsibility this week. Please do your best to:
+  +header(headings)
 
-  tr
-    td(colspan="2").content-block
-      ol
-        li Keep an eye on the dishwashers. Start them when full, empty when finished.
-        li Wipe down the counters and tables (preferably right after breakfast & lunch).
-        li Remove old and smelly stuff from the fridges and the freezer.
+  +row
+    br
+    h4 Hello #[+fullNames(thisWeek.names)]!
+    | It is everyone’s responsibility to keep the kitchen neat and tidy but as kitchen heroes you guys have a tiny bit extra responsibility this week. Please do your best to:
 
-  tr
-    td(colspan="2").content-block
-      | Have you noticed the kitchen-hero-praiser iPad in the kitchen? Here are some tips for increasing your #[+feedbackTypes(feedbackTypes)] probability during the week:
+  +row
+    ol
+      li Keep an eye on the dishwashers. Start them when full, empty when finished.
+      li Wipe off the counters and tables (preferably right after breakfast & lunch).
+      li Remove old and smelly stuff from the fridges and the freezer.
 
-  tr
-    td(colspan="2").content-block
+  +row
+    | Have you noticed the kitchen-hero-praiser iPad in the kitchen? Here are some tips for increasing your #[+feedbackTypes(feedbackTypes)]  probability during the week:
 
-      - var arr = [];
-      - arr.push("Ensure that all the seed, nut and 🍏🍌🍊 bowls are filled up.");
-      - arr.push("Dark and gloomy? Light some candles! Make the kitchen cozy.");
-      - arr.push("Put on some 🎵 to set the mood. Something you like. Not Nickelback...");
-      - arr.push("Get some 🌹 for the office. Why? They smell good and are pretty.");
-      - arr.push("Tell Björn to place a food order for something special. Be creative!");
-      - arr.push("Treat your co-workers to a luxury breakfast or fika by baking something.");
-      - arr.push("Empty the trash cans if they start to smell like 💩");
+  +row
+    - var arr = [];
+    - arr.push("Ensure that all the seed, nut and 🍏🍌🍊 bowls are filled up.");
+    - arr.push("Dark and gloomy? Light some candles! Make the kitchen cozy.");
+    - arr.push("Put on some 🎵 to set the mood. Something you like. Not Nickelback...");
+    - arr.push("Get some 🌹 for the office. Why? They smell good and are pretty.");
+    - arr.push("Tell Björn to place a food order for something special. Be creative!");
+    - arr.push("Treat your co-workers to a luxury breakfast or fika by baking something.");
+    //- - arr.push("Empty the trash cans if they start to smell like 💩");
 
-      ul
-        li #[+sample(arr)]
-        li #[+sample(arr)]
+    ul
+      li #[+sample(arr)]
+      li #[+sample(arr)]
 
   - var resultsPrevWeek = prevWeek.feedback[0].total + prevWeek.feedback[1].total;
   if resultsPrevWeek
-    tr
-      td(colspan="2").content-block
-        | Last weeks kitchen heroes was #[+fullNames(prevWeek.names)], they got:
+    +row
+      | Last weeks kitchen heroes was #[+fullNames(prevWeek.names)], they got:
 
     +results(images, prevWeek.feedback)
 
-    tr
-      td(colspan="2").content-block
-        | They therefore received a score of #[+score(prevWeek.feedback)]. Think you can beat that?
+    +row
+      | #[+score(prevWeek.feedback)]. Think you can beat that?
 
-  +footer("Can't be a kitchen hero this week? Mail looks strange? Talk to Simon (the tall one).")
+  +footer("Can't be a kitchen hero this week? Mail looks strange? Talk to <a href='mailto:simon.johansson@screeninteraction.com'>Simon</a> (the tall one).")
