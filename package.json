@@ -7,7 +7,7 @@
   },
   "scripts": {
     "start": "node .",
-    "forever": "NODE_ENV=production ../bin/node ./node_modules/.bin/forever ."
+    "forever": "NODE_ENV=production ../bin/node ./node_modules/.bin/forever start ."
   },
   "dependencies": {
     "babel": "^5.8.29",
