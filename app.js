@@ -6,6 +6,7 @@ import logger from 'morgan';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
 import browserify from 'browserify-middleware';
+import babelify from 'babelify';
 import less from 'less-file';
 
 import routes from './routes/index';
@@ -17,10 +18,7 @@ const env = process.env.NODE_ENV || 'development';
 app.locals.ENV = env;
 app.locals.ENV_DEVELOPMENT = env == 'development';
 
-require('./lib/schedule');
-
 // view engine setup
-
 app.set('views', join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
@@ -33,8 +31,6 @@ app.use(bodyParser.urlencoded({
 app.use(cookieParser());
 app.use(express.static(join(__dirname, 'public')));
 app.use('/style', less(join(__dirname, 'styling', 'client.less')));
-
-const babelify = require('babelify');
 
 browserify.settings({
   transform: [[babelify, {presets: ['es2015', 'stage-0']}]]
