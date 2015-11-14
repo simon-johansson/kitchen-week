@@ -2,17 +2,23 @@
 import request from 'superagent';
 import $ from 'jquery';
 import spinner from './spinner';
-// import isOnline from 'is-online';
-
-// isOnline((err, online) => {
-//   console.log(online);
-// });
+import attachFastClick from 'fastclick';
+import sweetalert from 'sweetalert';
 
 class AppView {
   constructor() {
     this.$btns = $('.feedback-button');
     this.$overlays = $('.overlay');
+    this.refreshInterval = 1800000; // 30 minutes
+    // this.refreshInterval = 5000; // 5 seconds
+    this.refreshTimer = undefined;
+
+    attachFastClick(document.body);
+
+    // this.testConnection();
     this.bindClickEvent();
+    this.resetRefreshTimer();
+
   }
 
   bindClickEvent() {
@@ -23,14 +29,26 @@ class AppView {
     this.$btns.off('click');
   }
 
+  resetRefreshTimer() {
+    clearTimeout(this.refreshTimer);
+    this.refreshTimer = setTimeout(() => {
+      location.reload();
+    }, this.refreshInterval);
+  }
+
+  testConnection() {
+    alert(navigator.onLine);
+  }
+
   onButtonClicked(ev) {
     const $el = $(ev.currentTarget);
-    const endpoint = $el.data('endpoint');
+    const feedbackType = $el.data('type');
     const $overlay = $el.find('.overlay');
 
+    this.resetRefreshTimer();
     this.unbindClickEvent();
     this.addSpinner($overlay);
-    this.giveFeedback(endpoint);
+    this.giveFeedback(feedbackType);
   }
 
   onRequestDone() {
@@ -40,8 +58,18 @@ class AppView {
   }
 
   onRequestFailed(err) {
-    alert(err);
-    // Reload page
+    sweetalert({
+      title: 'Something went wrong!',
+      text: `${err}
+
+              Please reload the page and try the same thing again.
+              If that doesn't work then talk to Simon (the tall one).`,
+      type:  'error',
+      confirmButtonText: 'RELOAD',
+      closeOnConfirm: false,
+      showLoaderOnConfirm: true,
+      confirmButtonColor: '#c61c59',
+    }, () => location.reload());
   }
 
   addSpinner($el) {
@@ -56,10 +84,10 @@ class AppView {
         .remove();
   }
 
-  giveFeedback(endpoint) {
+  giveFeedback(feedbackType) {
     request
-      .post(endpoint)
-      .send({})
+      .post('/feedback')
+      .send({type: feedbackType})
       .set('Accept', 'application/json')
       .end((err, res) => {
         if (err) this.onRequestFailed(err);
