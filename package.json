@@ -7,7 +7,7 @@
   },
   "scripts": {
     "start": "node .",
-    "forever": "./bin/node ./node_modules/.bin/forever index.js"
+    "forever": "NODE_ENV=production ../bin/node ./node_modules/.bin/forever ."
   },
   "dependencies": {
     "babel": "^5.8.29",
@@ -27,6 +27,7 @@
     "google-spreadsheet": "^1.0.1",
     "jade": "^1.11.0",
     "jquery": "^2.1.4",
+    "less": "^2.5.3",
     "less-file": "0.0.9",
     "lodash": "^3.10.1",
     "moment": "^2.10.6",
