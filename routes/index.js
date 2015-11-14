@@ -1,10 +1,7 @@
 
 import {Router} from 'express';
 import mail from '../lib/mail';
-import {
-  givePositiveFeedback,
-  giveNegativeFeedback
-} from '../lib/spreadsheet';
+import {giveFeedback} from '../lib/spreadsheet';
 import propagate from '../lib/propagate';
 import getTemplateData from '../lib/getTemplateData';
 
@@ -32,16 +29,17 @@ router.get('/', (req, res, next) => {
     .catch(onError);
 });
 
-router.post('/positive', (req, res, next)  => {
-  givePositiveFeedback()
+router.post('/feedback', (req, res, next)  => {
+  // console.log(req.body.type);
+  giveFeedback(req.body.type)
     .then(onSuccess(res))
     .catch(onError(res));
 });
 
-router.post('/negative', (req, res)  => {
-  giveNegativeFeedback()
-    .then(onSuccess(res))
-    .catch(onError(res));
-});
+//router.post('/negative', (req, res)  => {
+//  giveNegativeFeedback()
+//    .then(onSuccess(res))
+//    .catch(onError(res));
+//});
 
 export default router;

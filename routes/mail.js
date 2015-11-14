@@ -20,9 +20,13 @@ const respond = (req, res, next, template) => {
   };
 
   getTemplateData()
-  .then(compileTemplate)
-  .then(sendHTML)
-  .catch(onError);
+  // .then(data => {
+  //   console.log(data);
+  //   return data;
+  // })
+    .then(compileTemplate)
+    .then(sendHTML)
+    .catch(onError);
 };
 
 router.get('/reminder', (...args) => {
