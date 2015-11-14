@@ -1,41 +1,27 @@
 extends layout
+include ../lib/mail/templates/_common/mixins.jade
 
 block content
 
   div#app
 
-    .error
-      h1 Noooo, something went wrong!
-      h2 Press the button below to reload the page and try to do the same thing again.
-        | If that does not work then talk to Simon (the tall one).
-      button Reload the app
-
     header
       h1 Kitchen heroes
-      //- h1 w. #{thisWeek.week}
 
     .people-in-charge
-      h1 #{thisWeek.names[0]} & #{thisWeek.names[1]}
-    //- h3 (#{thisWeek.emails[0]}) & (#{thisWeek.emails[1]})
-
+      h1 #[+fullNames(thisWeek.names)]
 
     .feedback-wrapper
-      img.arrow-right(src="/img/arrow1.png")
+
       img.arrow-left(src="/img/arrow2.png")
+      - var arr = ['fabulous', 'stunning', 'sensational', 'awesome', 'amazing'];
+      h3 Kitchen looking #[+sample(arr)]? <br/>
+        | Give some praise to #[+firstNames(thisWeek.names)]
+      img.arrow-right(src="/img/arrow1.png")
+      br
 
-      h3 What's your impression of the kitchen? <br/> Give #{thisWeek.names[0].split(' ')[0]} & #{thisWeek.names[1].split(' ')[0]} some feedback
-
-      .feedback-button(data-endpoint='/positive')
-        .img-wrapper
-          .overlay
-          img(src="#{images.positive.url}")
-        h3 #{images.positive.tag}
-
-      .feedback-button(data-endpoint='/negative')
-        .img-wrapper
-          .overlay
-          img(src="#{images.negative.url}")
-        h3 #{images.negative.tag}
+      +feedbackButton(0, feedbackTypes, images)
+      +feedbackButton(1, feedbackTypes, images)
 
   footer
     p.nextWeek Next week: #{nextWeek.names[0]} & #{nextWeek.names[1]}
