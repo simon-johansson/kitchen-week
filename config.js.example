@@ -1,0 +1,16 @@
+
+export default {
+  keys: {
+    mandrill: '', // Mandrill api-ley
+    giphy: 'dc6zaTOxFJmzC', // 'free' api-key supplied by Giphy
+    google: {
+      private_key: '', // https://www.npmjs.com/package/google-spreadsheet#service-account-recommended-method
+      client_email: '',
+    }
+  },
+  spreadsheetID: '', // id of google spreadsheet to use
+  email: {
+    fromEmail: '', // sender of the emails
+    willAlwaysRecive: '' // will be CC:ed to all emails if supplied
+  }
+};
