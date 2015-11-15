@@ -3,7 +3,7 @@
 require('babel/register');
 
 // Start scheduled events
-require('./lib/schedule');
+require('./schedule');
 
 // Initiate and start server
 var app = require('./app');
