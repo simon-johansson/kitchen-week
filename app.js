@@ -22,8 +22,16 @@ app.locals.ENV_DEVELOPMENT = env == 'development';
 app.set('views', join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
+// logging
+if (env === 'development') {
+  app.use(logger('dev'));
+} else {
+  app.use(logger('combined', {
+    skip: function (req, res) { return res.statusCode < 400 }
+  }));
+}
+
 // app.use(favicon(__dirname + '/public/img/favicon.ico'));
-app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
