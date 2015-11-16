@@ -27,7 +27,7 @@ if (env === 'development') {
   app.use(logger('dev'));
 } else {
   app.use(logger('combined', {
-    skip: function (req, res) { return res.statusCode < 400 }
+    skip: (req, res) => res.statusCode < 400,
   }));
 }
 
