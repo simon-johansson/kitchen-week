@@ -1,12 +1,12 @@
 
 import schedule from 'node-schedule';
-import propagate from './propagate';
-import getTemplateData from './getTemplateData';
+import propagate from './lib/propagate';
+import getTemplateData from './lib/getTemplateData';
 import {
   sendReminderEmail,
   sendStatusEmail,
   sendSummaryEmail,
-} from './mail';
+} from './lib/mail';
 
 const rules = {
   reminderEmail: {
