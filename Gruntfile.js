@@ -20,7 +20,7 @@ module.exports = function (grunt) {
     },
 
     eslint: {
-      target: ['lib/', 'routes/', 'public/js/']
+      target: ['*.js', 'lib/**/*.js', 'routes/*.js', 'public/js/*.js']
     },
 
     watch: {
