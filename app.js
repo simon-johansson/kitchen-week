@@ -26,7 +26,7 @@ app.set('view engine', 'jade');
 if (env === 'development') {
   app.use(logger('dev'));
 } else {
-  app.use(logger('combined', {
+  app.use(logger('dev', {
     skip: (req, res) => res.statusCode < 400,
   }));
 }
