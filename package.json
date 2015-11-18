@@ -6,7 +6,7 @@
     "node": "4.x.x"
   },
   "scripts": {
-    "start": "node .",
+    "start": "node index.js",
     "forever-start": "NODE_ENV=production ../bin/node ./node_modules/.bin/forever start .",
     "forever-list": "../bin/node ./node_modules/.bin/forever list"
   },
