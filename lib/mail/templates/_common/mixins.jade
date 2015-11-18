@@ -21,7 +21,7 @@ mixin header(titles)
         - var daysLeft = 5 - daysDone;
         h1 #{daysDone} days down, #{daysLeft} more to go!
 
-mixin results(images, feedback)
+mixin results(images, feedback, totalOrToday)
   tr
   each val in [0, 1]
     td.content-block.col-split
@@ -29,7 +29,7 @@ mixin results(images, feedback)
       br
       br
       div.result-wrapper
-        span.positive #{feedback[val].total}
+        span.positive #{feedback[val][totalOrToday]}
         br
         span.description #{images[val].tag}
 

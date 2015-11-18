@@ -13,10 +13,10 @@ block content
     h4 Hi #[+firstNames(thisWeek.names)]!
     | This is the feedback you guys have received so far today:
 
-  +results(images, thisWeek.feedback)
+  +results(images, thisWeek.feedback, 'today')
 
   +row
-    - var goodJob = thisWeek.feedback[0].total + thisWeek.feedback[1].total;
+    - var goodJob = thisWeek.feedback[0].today + thisWeek.feedback[1].today;
     - var arr = [];
     - arr.push("Nice going! Keep up the good work for tomorrow as well.");
     - arr.push("Awesome, you got some praise! Let's keep it coming tomorrow as well");
