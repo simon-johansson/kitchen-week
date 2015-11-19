@@ -1,0 +1,23 @@
+extends layout
+include ../lib/mail/templates/_common/mixins.jade
+
+block content
+
+  div#highscore
+
+    header
+      h1 Highscore
+
+    table
+      tr
+        th Position
+        th Score
+        th Name
+        th Week
+
+      each score, index in highscore
+        tr
+          td #[+highscorePosition(index)]
+          td= score.score
+          td #[+fullNames(score.names)]
+          td= score.week

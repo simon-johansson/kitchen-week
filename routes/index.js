@@ -16,8 +16,8 @@ const onError = res => {
   return () => res.status(500).json(err);
 };
 
-router.get('/', (req, res, next) => {
-  const renderTemplate = data => res.render('index', data);
+const renderTemplate = (req, res, next, template) => {
+  const render = data => res.render(template, data);
   const onError = (err) => {
     const error = new Error(err);
     error.status = 500;
@@ -25,21 +25,22 @@ router.get('/', (req, res, next) => {
   };
 
   getTemplateData()
-    .then(renderTemplate)
+    .then(render)
     .catch(onError);
+};
+
+router.get('/', (...args) => {
+  renderTemplate(...args, 'index');
+});
+
+router.get('/highscore', (...args) => {
+  renderTemplate(...args, 'highscore');
 });
 
 router.post('/feedback', (req, res, next)  => {
-  // console.log(req.body.type);
   giveFeedback(req.body.type)
     .then(onSuccess(res))
     .catch(onError(res));
 });
-
-//router.post('/negative', (req, res)  => {
-//  giveNegativeFeedback()
-//    .then(onSuccess(res))
-//    .catch(onError(res));
-//});
 
 export default router;

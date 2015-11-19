@@ -13,7 +13,8 @@ body {
   display: none;
 }
 
-#app {
+#app,
+#highscore {
   background-color: #fff;
   border: 1px solid @lightgray;
   border-radius: 3px;
@@ -22,6 +23,44 @@ body {
   bottom: 60px;
   left: 20px;
   right: 20px;
+}
+
+.brad {
+  position: absolute;
+  top: -400px;
+  left: 0px;
+  z-index: 99999;
+  width: 300px;
+  height: 300px;
+  shape-outside: url(/img/heart.png);
+  shape-margin: 15px;
+  shape-image-threshold: 0.5;
+  background: url(/img/brad.gif);
+  // background-position: -120px 30px;
+  background-position: 90% 70%;
+  background-size: 140%;
+  -webkit-mask-image: url(/img/heart.png);
+  -webkit-mask-size: 100%;
+  -webkit-mask-position: 0 0;
+  &.drop {
+    bottom: -400px;
+  }
+}
+
+.jim {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  bottom: 20px;
+  right: 20px;
+  z-index: 99999;
+  // width: 300px;
+  // height: 300px;
+  background: url(/img/jim.gif);
+  background-repeat: no-repeat;
+  // background-position: -120px 30px;
+  // background-position: 90% 70%;
+  background-size: 100%;
 }
 
 header {
@@ -34,8 +73,6 @@ header {
   text-align: center;
 
   h1 {
-    // background: @lightgray;
-    // padding: 10px;
     color: @dark-gray;
     display: block;
     font-weight: bold;
@@ -51,7 +88,6 @@ header {
 
   .arrow-left,
   .arrow-right {
-    // position: absolute;
     opacity: 0.9;
     display: inline-block;
     vertical-align: text-top;
@@ -61,20 +97,14 @@ header {
     transform: rotate(-40deg);
     -webkit-transform: rotate(-40deg);
     width: 60px;
-    // float: left;
-    // top: 30px;
-    // left: 250px;
   }
 
   .arrow-right {
-    // float: right;
     transform: rotate(70deg);
     -webkit-transform: rotate(70deg);
     width: 50px;
     margin-top: 7px;
     margin-left: 5px;
-    // top: 35px;
-    // right: 255px;
   }
 
   h3 {
@@ -118,7 +148,6 @@ header {
       width: 100%;
       height: 300px;
       display: block;
-      // box-shadow: 3px 3px 1px black;
     }
 
     h3 {
@@ -131,7 +160,6 @@ header {
 footer {
   position: absolute;
   height: 20px;
-  // border: 1px solid red;
   bottom: 20px;
   left: 20px;
   right: 20px;
@@ -149,5 +177,19 @@ footer {
 
   p:last-child {
     text-align: right;
+  }
+}
+
+#highscore {
+  margin: auto;
+  max-width: 620px;
+
+  table {
+    margin: 20px;
+    width: 100%;
+
+    th {
+      text-align: left;
+    }
   }
 }
