@@ -28,8 +28,6 @@ body {
 .brad {
   position: absolute;
   top: -400px;
-  top: 0;
-  left: 0px;
   z-index: 99999;
   width: 300px;
   height: 300px;
@@ -44,8 +42,11 @@ body {
   -webkit-mask-size: 100%;
   -webkit-mask-position: 0 0;
 
+  -webkit-transition-property: top;
+  -webkit-transition-timing-function: linear;
+
   &.drop {
-    bottom: -400px;
+    top: 100%;
   }
 }
 

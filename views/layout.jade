@@ -5,14 +5,14 @@ html(lang='en')
     meta(name='viewport', content='width=device-width, initial-scale=1')
     meta(name="apple-mobile-web-app-capable", content="yes")
     title= title
+
     block css
       link(rel='stylesheet', href='/css/vendor/sweetalert.css')
       link(rel='stylesheet', href='/style/bundle.css')
+
   body
     block content
 
     block js
-      script(src="/js/bundle.js")
-
       if ENV_DEVELOPMENT
         script(src='http://localhost:35729/livereload.js')

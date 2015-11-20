@@ -3,7 +3,6 @@ include ../lib/mail/templates/_common/mixins.jade
 
 block content
 
-  //- .brad
   //- .jim
 
   div#app
@@ -29,3 +28,7 @@ block content
   footer
     p.nextWeek Next week: #{nextWeek.names[0]} & #{nextWeek.names[1]}
     p Something's broken? Please talk to Simon (the tall one)
+
+
+block js
+  script(src="/js/bundle.js")

@@ -1,9 +1,10 @@
 
 import request from 'superagent';
 import $ from 'jquery';
-import spinner from './spinner';
 import attachFastClick from 'fastclick';
 import sweetalert from 'sweetalert';
+import spinner from './spinner';
+import {brad} from './feedback-animations';
 
 class AppView {
   constructor() {
@@ -45,6 +46,7 @@ class AppView {
     const feedbackType = $el.data('type');
     const $overlay = $el.find('.overlay');
 
+    brad();
     this.resetRefreshTimer();
     this.unbindClickEvent();
     this.addSpinner($overlay);
