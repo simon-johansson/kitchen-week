@@ -14,31 +14,20 @@ Built with :heart: and:
 
 ### iPad
 The UI for the iPad that is placed in the kitchen
+<img width="600" src="promo/ipad.png" alt="" />
 
-<p align="center">
-  <img width="600" src="promo/ipad.png" alt="" />
-</p>
 
 ### Emails
 The emails that are sent out to the kitchen heroes
 
-<p align="center">
-  <strong>Reminder email</strong>
-  <br>
-  Sent out at the beginning of the week
-  <img width="600" src="promo/reminder.png" alt="" />
-</p>
+#### Reminder email
+Sent out at the beginning of the week
+<img width="600" src="promo/reminder.png" alt="" />
 
-<p align="center">
-  <strong>Status email</strong>
-  <br>
-  Sent out at the end of the day, Monday - Thursday
-  <img width="600" src="promo/status.png" alt="" />
-</p>
+#### Status email
+Sent out at the end of the day, Monday - Thursday
+<img width="600" src="promo/status.png" alt="" />
 
-<p align="center">
-  <strong>Summary email</strong>
-  <br>
-  Sent out at the end of the week
-  <img width="600" src="promo/summary.png" alt="" />
-</p>
+#### Summary email
+Sent out at the end of the week
+<img width="600" src="promo/summary.png" alt="" />
