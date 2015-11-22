@@ -27,3 +27,21 @@ export const brad = () => {
   setTimeout(() => $('.brad').remove(), 20000);
 };
 
+export const walking = () => {
+  const el = $('<div/>').addClass('walking');
+  $body.prepend(el);
+
+  setTimeout(() => $('.walking').addClass('walk'), 100);
+  setTimeout(() => $('.walking').remove(), 15000);
+};
+
+export const thanks = () => {
+
+  const el = $('<div/>').addClass('thanks');
+  $body.prepend(el);
+
+  setTimeout(() => $('.thanks').addClass('grow'), <10> </10>0);
+  setTimeout(() => $('.thanks').removeClass('grow'), 5000);
+  setTimeout(() => $('.thanks').remove(), 10000);
+};
+
