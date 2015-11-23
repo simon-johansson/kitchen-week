@@ -1,0 +1,79 @@
+
+.thanks {
+  position: absolute;
+  z-index: 99999;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: url(/img/thanks.gif);
+  background-position: 100% 100%;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  transform: scale(0);
+  transition: all 1s ease;
+
+  &.grow {
+    transform: scale(1);
+  }
+}
+
+.walking {
+  position: absolute;
+  z-index: 99999;
+  width: 800px;
+  height: 800px;
+  top: 0;
+  left: 0%;
+  margin-left: -800px;
+  background: url(/img/walking.gif);
+  background-position: 0% 0%;
+  background-size: 100%;
+
+  -webkit-transition: left 10s linear;
+
+  &.walk {
+    left: 200%;
+  }
+}
+
+.brad {
+  position: absolute;
+  top: -400px;
+  z-index: 99999;
+  width: 300px;
+  height: 300px;
+  shape-outside: url(/img/heart.png);
+  shape-margin: 15px;
+  shape-image-threshold: 0.5;
+  background: url(/img/brad.gif);
+  // background-position: -120px 30px;
+  background-position: 90% 70%;
+  background-size: 140%;
+  -webkit-mask-image: url(/img/heart.png);
+  -webkit-mask-size: 100%;
+  -webkit-mask-position: 0 0;
+
+  -webkit-transition-property: top;
+  -webkit-transition-timing-function: linear;
+
+  &.drop {
+    top: 100%;
+  }
+}
+
+.jim {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  bottom: 20px;
+  right: 20px;
+  z-index: 99999;
+  // width: 300px;
+  // height: 300px;
+  background: url(/img/jim.gif);
+  background-repeat: no-repeat;
+  // background-position: -120px 30px;
+  // background-position: 90% 70%;
+  background-size: 100%;
+}

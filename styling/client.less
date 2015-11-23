@@ -4,6 +4,7 @@
 @import '_helpers';
 @import '_variables';
 @import '_fonts';
+@import '_feedback-animations';
 
 body {
   padding: 20px;
@@ -23,47 +24,6 @@ body {
   bottom: 60px;
   left: 20px;
   right: 20px;
-}
-
-.brad {
-  position: absolute;
-  top: -400px;
-  z-index: 99999;
-  width: 300px;
-  height: 300px;
-  shape-outside: url(/img/heart.png);
-  shape-margin: 15px;
-  shape-image-threshold: 0.5;
-  background: url(/img/brad.gif);
-  // background-position: -120px 30px;
-  background-position: 90% 70%;
-  background-size: 140%;
-  -webkit-mask-image: url(/img/heart.png);
-  -webkit-mask-size: 100%;
-  -webkit-mask-position: 0 0;
-
-  -webkit-transition-property: top;
-  -webkit-transition-timing-function: linear;
-
-  &.drop {
-    top: 100%;
-  }
-}
-
-.jim {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  bottom: 20px;
-  right: 20px;
-  z-index: 99999;
-  // width: 300px;
-  // height: 300px;
-  background: url(/img/jim.gif);
-  background-repeat: no-repeat;
-  // background-position: -120px 30px;
-  // background-position: 90% 70%;
-  background-size: 100%;
 }
 
 header {

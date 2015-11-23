@@ -4,7 +4,7 @@ import $ from 'jquery';
 import attachFastClick from 'fastclick';
 import sweetalert from 'sweetalert';
 import spinner from './spinner';
-import {brad} from './feedback-animations';
+import {randomFeedbackAnimation} from './feedback-animations';
 
 class AppView {
   constructor() {
@@ -46,7 +46,7 @@ class AppView {
     const feedbackType = $el.data('type');
     const $overlay = $el.find('.overlay');
 
-    brad();
+    randomFeedbackAnimation();
     this.resetRefreshTimer();
     this.unbindClickEvent();
     this.addSpinner($overlay);
