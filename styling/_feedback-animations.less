@@ -39,7 +39,7 @@
 
 .brad {
   position: absolute;
-  top: -400px;
+  top: -700px;
   z-index: 99999;
   width: 300px;
   height: 300px;
@@ -54,11 +54,12 @@
   -webkit-mask-size: 100%;
   -webkit-mask-position: 0 0;
 
-  -webkit-transition-property: top;
+  -webkit-transition-property: transform;
   -webkit-transition-timing-function: linear;
 
   &.drop {
-    top: 100%;
+    // top: 100%;
+    -webkit-transform: translate(0, 1500px);
   }
 }
 

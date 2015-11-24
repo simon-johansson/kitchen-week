@@ -6,26 +6,29 @@ const $body = $('body');
 let counter = random(0, 2);
 
 const brad = () => {
-  const numberOfBrads = 12;
+  const numberOfBrads = 1;
 
-  for (let ii = numberOfBrads; ii >= 0; ii--) {
-    const size = `${random(130, 450)}px`;
+  for (let ii = numberOfBrads; ii >= 1; ii--) {
+    // const size = `${random(500, 550)}px`;
+    const size = '700px';
     const el = $('<div/>')
       .addClass('brad')
       .css({
-        'left': `${random(0, 80)}%`,
+        // 'left': `${random(0, 50)}%`,
+        'left': '15%',
         'width': size,
         'height': size,
         'margin-left': `-${size / 2}px`,
         // 'top': `-${size}px`,
-        '-webkit-transition-duration': `${random(8, 15)}s`,
-        '-webkit-transition-delay': `${random(0.0, 4.0)}s`,
+        // '-webkit-transition-duration': `${random(15, 20)}s`,
+        '-webkit-transition-duration': '20s',
+        // '-webkit-transition-delay': `${random(0.0, 4.0)}s`,
       });
     $body.prepend(el);
   };
 
   setTimeout(() => $('.brad').addClass('drop'), 10);
-  setTimeout(() => $('.brad').remove(), 20000);
+  setTimeout(() => $('.brad').remove(), 22000);
 };
 
 const walking = () => {
