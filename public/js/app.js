@@ -6,6 +6,8 @@ import sweetalert from 'sweetalert';
 import spinner from './spinner';
 import {randomFeedbackAnimation} from './feedback-animations';
 
+
+
 class AppView {
   constructor() {
     this.$btns = $('.feedback-button');
@@ -15,6 +17,7 @@ class AppView {
     this.refreshTimer = undefined;
 
     attachFastClick(document.body);
+    document.ontouchmove = e => e.preventDefault();
 
     // this.testConnection();
     this.bindClickEvent();
