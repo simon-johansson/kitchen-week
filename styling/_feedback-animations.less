@@ -11,7 +11,7 @@
   background-size: 100%;
   background-repeat: no-repeat;
   transform: scale(0);
-  transition: all 1s ease;
+  transition: all 1.5s ease;
 
   &.grow {
     transform: scale(1);
@@ -30,19 +30,25 @@
   background-position: 0% 0%;
   background-size: 100%;
 
-  -webkit-transition: left 10s linear;
+  -webkit-transition-property: transform;
+  -webkit-transition-timing-function: linear;
 
   &.walk {
-    left: 200%;
+    // left: 200%;
+    -webkit-transform: translate(2200px, 0);
+    -webkit-transition-duration: 12s;
   }
 }
 
+@size: 700px;
 .brad {
   position: absolute;
-  top: -700px;
+  top: -@size;
   z-index: 99999;
-  width: 300px;
-  height: 300px;
+  width: @size;
+  height: @size;
+  // margin-left: -(@size / 2);
+  left: 15%;
   shape-outside: url(/img/heart.png);
   shape-margin: 15px;
   shape-image-threshold: 0.5;
@@ -58,7 +64,7 @@
   -webkit-transition-timing-function: linear;
 
   &.drop {
-    // top: 100%;
+    -webkit-transition-duration: 12s;
     -webkit-transform: translate(0, 1500px);
   }
 }
