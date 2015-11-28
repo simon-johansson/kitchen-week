@@ -7,18 +7,18 @@
   bottom: 0;
   left: 0;
   background: url(/img/thanks.gif);
-  background-position: 100% 100%;
-  background-size: 100%;
+  background-position: 0% 0%;
+  background-size: 100% 105%;
   background-repeat: no-repeat;
-  transform: scale(0);
-  transition: all 1.5s ease;
+  -webkit-transform: scale(0);
+  -webkit-transition: transform 1.5s ease;
 
   &.grow {
-    transform: scale(1);
+    -webkit-transform: scale(1);
   }
 }
 
-.walking {
+.bean {
   position: absolute;
   z-index: 99999;
   width: 800px;
@@ -26,14 +26,14 @@
   top: 0;
   left: 0%;
   margin-left: -800px;
-  background: url(/img/walking.gif);
+  background: url(/img/bean.gif);
   background-position: 0% 0%;
   background-size: 100%;
 
   -webkit-transition-property: transform;
   -webkit-transition-timing-function: linear;
 
-  &.walk {
+  &.walking {
     // left: 200%;
     -webkit-transform: translate(2200px, 0);
     -webkit-transition-duration: 12s;
@@ -41,21 +41,20 @@
 }
 
 @size: 700px;
-.brad {
+
+.brad,
+.asta {
   position: absolute;
   top: -@size;
   z-index: 99999;
   width: @size;
   height: @size;
-  // margin-left: -(@size / 2);
   left: 15%;
+
   shape-outside: url(/img/heart.png);
   shape-margin: 15px;
   shape-image-threshold: 0.5;
-  background: url(/img/brad.gif);
-  // background-position: -120px 30px;
-  background-position: 90% 70%;
-  background-size: 140%;
+
   -webkit-mask-image: url(/img/heart.png);
   -webkit-mask-size: 100%;
   -webkit-mask-position: 0 0;
@@ -69,18 +68,90 @@
   }
 }
 
-.jim {
+.brad {
+  background: url(/img/brad.gif);
+  background-position: 90% 70%;
+  background-size: 140%;
+}
+
+.asta {
+  background: url(/img/asta.jpg);
+  background-size: 100%;
+  background-position: 0px 0px;
+}
+
+
+.cheesy1,
+.cheesy2,
+.cheesy3,
+.cheesy4,
+.cheesy5,
+.cheesy6,
+.cheesy7 {
   position: absolute;
+  z-index: 99999;
+  background-repeat: no-repeat;
+  -webkit-transform: scale(0);
+  -webkit-transition-property: transform;
+  -webkit-transition-duration: 0.4s;
+
+  &.show {
+    -webkit-transform: scale(1);
+  }
+}
+
+.cheesy1 {
+  background: url(/img/cheesy1.gif);
+  width: 471px;
+  height: 154px;
   top: 20px;
   left: 20px;
-  bottom: 20px;
-  right: 20px;
-  z-index: 99999;
-  // width: 300px;
-  // height: 300px;
-  background: url(/img/jim.gif);
-  background-repeat: no-repeat;
-  // background-position: -120px 30px;
-  // background-position: 90% 70%;
-  background-size: 100%;
 }
+
+.cheesy2 {
+  background: url(/img/cheesy2.gif);
+  width: 280px;
+  height: 223px;
+  top: 200px;
+  left: 200px;
+}
+
+.cheesy3 {
+  background: url(/img/cheesy3.jpg);
+  width: 590px;
+  height: 306px;
+  top: 450px;
+  left: 450px;
+}
+
+.cheesy4 {
+  background: url(/img/cheesy4.gif);
+  width: 262px;
+  height: 115px;
+  top: 50px;
+  left: 600px;
+}
+
+.cheesy5 {
+  background: url(/img/cheesy5.gif);
+  width: 419px;
+  height: 234px;
+  top: 500px;
+  left: 50px;
+}
+
+.cheesy6 {
+  background: url(/img/cheesy6.gif);
+  width: 377px;
+  height: 247px;
+  top: 200px;
+  left: 500px;
+}
+
+// .cheesy7 {
+//   background: url(/img/cheesy7.gif);
+//   width: 345px;
+//   height: 163px;
+//   top: 400px;
+//   left: 400px;
+// }
