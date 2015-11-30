@@ -36,7 +36,6 @@ const animations = [brad, walking, asta, thanks, thankyous];
 let counter = random(0, (animations.length - 1));
 
 export const randomFeedbackAnimation = () => {
-  // animations[counter]();
-  thanks();
+  animations[counter]();
   counter = counter >= (animations.length - 1) ? 0 : counter + 1;
 };
