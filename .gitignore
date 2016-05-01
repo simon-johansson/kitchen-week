@@ -5,3 +5,4 @@ public/components
 todo.md
 google-generated-creds.json
 config.js
+*.log
