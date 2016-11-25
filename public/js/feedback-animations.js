@@ -12,6 +12,7 @@ const animate = ($el, className) => {
 };
 
 const brad = () => animate($('.brad'), 'drop');
+const queen = () => animate($('.queen'), 'drop');
 const asta = () => animate($('.asta'), 'drop');
 const walking = () => animate($('.bean'), 'walking');
 
@@ -32,7 +33,7 @@ const thankyous = () => {
   };
 };
 
-const animations = [brad, walking, asta, thanks, thankyous];
+const animations = [brad, walking, asta, thanks, thankyous, queen];
 let counter = random(0, (animations.length - 1));
 
 export const randomFeedbackAnimation = () => {
