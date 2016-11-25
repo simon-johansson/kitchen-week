@@ -33,22 +33,26 @@ header {
 }
 
 .people-in-charge {
-  margin-top: 50px;
+  width: 90%;
+  margin: 25px auto;
   text-align: center;
 
-  h1 {
+  h1,
+  h1 span {
     color: @dark-gray;
-    display: block;
+    display: inline-block;
     font-weight: bold;
     font-size: 50px;
   }
 }
 
 .feedback-wrapper {
-  margin-top: 50px;
+  margin-top: 25px;
   width: 100%;
-  position: relative;
   text-align: center;
+  // position: relative;
+  position: absolute;
+  bottom: 15px;
 
   .arrow-left,
   .arrow-right {
@@ -133,6 +137,11 @@ footer {
     font-weight: bold;
     width: 50%;
     display: inline-block;
+  }
+
+  p,
+  p span {
+    font-size: 13px;
   }
 
   p:first-child {

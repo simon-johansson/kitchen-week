@@ -41,13 +41,20 @@ mixin score(feedback)
   | That makes a total of <strong>#{feedback[0].total + feedback[1].total} praises</strong> (#{feedback[0].total} + #{feedback[1].total})
 
 mixin fullNames(names)
-  if names[0] && names[1]
-    = names[0] + ' & ' + names[1]
+  if names[0] && names[1] && names[2]
+    <span>#{names[0]}</span>, <span>#{names[1]}</span> & <span>#{names[2]}</span>
+  else if names[0] && names[1]
+    <span>#{names[0]}</span> & <span>#{names[1]}</span>
   else if names[0]
-    = names[0]
+    <span>#{names[0]}</span>
 
 mixin truncatedNames(names)
-  if names[0] && names[1]
+  if names[0] && names[1] && names[2]
+    - var name1 = names[0].split(' ');
+    - var name2 = names[1].split(' ');
+    - var name3 = names[2].split(' ');
+    | #{name1[0]} #{name1[1][0]}., #{name2[0]} #{name2[1][0]}. & #{name3[0]} #{name3[1][0]}.
+  else if names[0] && names[1]
     - var name1 = names[0].split(' ');
     - var name2 = names[1].split(' ');
     | #{name1[0]} #{name1[1][0]}. & #{name2[0]} #{name2[1][0]}.
@@ -56,13 +63,15 @@ mixin truncatedNames(names)
     | #{name1[0]} #{name1[1][0]}.
 
 mixin firstNames(names)
-  if names[0] && names[1]
+  if names[0] && names[1] && names[2]
+    = names[0].split(' ')[0] + ', ' + names[1].split(' ')[0] + ' & ' + names[2].split(' ')[0]
+  else if names[0] && names[1]
     = names[0].split(' ')[0] + ' & ' + names[1].split(' ')[0]
   else if names[0]
     = names[0].split(' ')[0]
 
 mixin highscorePosition(index)
-  != index ? (index + 1) + ".&nbsp;&nbsp;" : '👑'
+  != index ? (index + 1) + ".&nbsp;&nbsp;" : '👑;&nbsp;'
 
 mixin feedbackTypes(feedbackTypes)
   = feedbackTypes[0].split(' ').join('-') + ' & ' + feedbackTypes[1].split(' ').join('-')
